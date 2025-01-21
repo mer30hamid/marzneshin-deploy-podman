@@ -1,8 +1,10 @@
 This is my copy of [Marzneshin script](https://github.com/marzneshin/marzneshin) for personal use.
 
 ## Install script
-
-Copy script.sh to server (/root/) and run:
+```bash
+bash -c "$(curl -sL https://raw.githubusercontent.com/mer30hamid/marzneshin-deploy-podman/refs/heads/main/script.sh)" @ install
+```
+or copy script.sh to server (/root/) and run:
 ```bash
 bash -c "$(curl -sL file://$(pwd)/script.sh)" @ install
 ```
@@ -84,7 +86,7 @@ https://gozargah.github.io/marzban/fa/docs/xray-inbounds
 
    for example:
    ```bash
-   wget -N -P /var/lib/marzneshin/templates/subscription/ https://raw.githubusercontent.com/MatinDehghanian/MarzneshinTemplate2/master/subscription/index.html
+   wget -N -P /var/lib/marzneshin/templates/subscription/ https://raw.githubusercontent.com/mer30hamid/marzneshin-deploy-podman/refs/heads/main/templates/MarzneshinTemplate6/index.html
    ```
 
 4. Restart is not needed but:
