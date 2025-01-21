@@ -206,6 +206,7 @@ services:
     privileged: true
     image: mariadb:latest
     restart: always
+    network_mode: host
     environment:
       MARIADB_ROOT_PASSWORD: 12341234
       MARIADB_DATABASE: marzneshin
