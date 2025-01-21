@@ -84,10 +84,10 @@ detect_and_update_package_manager() {
 
 detect_compose() {
     # Check if podman-compose command exists
-    if command -v podman-compose >/dev/null 2>&1; then
+    if command -v /usr/local/bin/podman-compose >/dev/null 2>&1; then
         COMPOSE='/usr/local/bin/podman-compose'
         echo "Using $COMPOSE"
-    elif command -v podman-compose >/dev/null 2>&1; then
+    elif command -v /usr/bin/podman-compose >/dev/null 2>&1; then
         COMPOSE='/usr/bin/podman-compose'
         echo "Using $COMPOSE"
     elif command -v podman >/dev/null 2>&1; then
