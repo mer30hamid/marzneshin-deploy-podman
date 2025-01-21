@@ -87,6 +87,9 @@ detect_compose() {
     if command -v podman-compose >/dev/null 2>&1; then
         COMPOSE='/usr/local/bin/podman-compose'
         echo "Using $COMPOSE"
+    elif command -v podman-compose >/dev/null 2>&1; then
+        COMPOSE='/usr/bin/podman-compose'
+        echo "Using $COMPOSE"
     elif command -v podman >/dev/null 2>&1; then
         echo "Checking if 'podman compose' is available..."
         # Run podman compose and capture the output
@@ -818,7 +821,7 @@ install_command() {
         #install_docker
     #fi
     if ! command -v podman >/dev/null 2>&1; then
-        install_package podman 
+        install_package podman podman-compose
     fi
 	
     # database="sqlite"
