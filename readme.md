@@ -2,7 +2,7 @@ This is my copy of [Marzneshin script](https://github.com/marzneshin/marzneshin)
 
 ## Install script
 ```bash
-bash -c "$(curl -sL https://raw.githubusercontent.com/mer30hamid/marzneshin-deploy-podman/refs/heads/main/script.sh)" @ install
+bash -c "$(curl -H 'Cache-Control: no-cache' -sL https://raw.githubusercontent.com/mer30hamid/marzneshin-deploy-podman/refs/heads/main/script.sh)" @ install
 ```
 or copy script.sh to server (/root/) and run:
 ```bash

@@ -162,7 +162,7 @@ services:
           cpus: '0.5'
           memory: 128M
     privileged: true
-    image: dawsh/marzneshin:latest
+    image: docker.io/dawsh/marzneshin:latest
     restart: always
     env_file: marzneshin.env
     #network_mode: host
@@ -182,7 +182,7 @@ services:
           cpus: '0.5'
           memory: 512M
     privileged: true
-    image: dawsh/marznode:latest
+    image: docker.io/dawsh/marznode:latest
     restart: always
     env_file: marznode.env
     #network_mode: host
@@ -204,7 +204,7 @@ services:
           cpus: '0.5'
           memory: 528M
     privileged: true
-    image: mariadb:latest
+    image: docker.io/mariadb:latest
     restart: always
     #network_mode: host
     environment:
