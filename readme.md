@@ -86,7 +86,7 @@ https://gozargah.github.io/marzban/fa/docs/xray-inbounds
 
    for example:
    ```bash
-   wget -N -P /var/lib/marzneshin/templates/subscription/ https://raw.githubusercontent.com/MatinDehghanian/MarzneshinTemplate2/master/subscription/index.html
+   wget -N -P /var/lib/marzneshin/templates/subscription/ https://raw.githubusercontent.com/mer30hamid/marzneshin-deploy-podman/refs/heads/main/templates/MarzneshinTemplate6/index.html
    ```
 
 4. Restart is not needed but:
