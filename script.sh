@@ -10,10 +10,10 @@ COMPOSE_FILE="$CONFIG_DIR/docker-compose.yml"
 USER_NAME="podman-user"
 
 FETCH_REPO="marzneshin/marzneshin"
-#SCRIPT_URL="https://github.com/$FETCH_REPO/raw/master/script.sh"
+SCRIPT_URL="https://github.com/$FETCH_REPO/raw/master/script.sh"
 
 # SCRIPT_URL="file://$(pwd)/script.sh"
-SCRIPT_URL="file:///root/marzneshin/script.sh"
+# SCRIPT_URL="file:///root/marzneshin/script.sh"
 
 colorized_echo() {
     local color=$1
