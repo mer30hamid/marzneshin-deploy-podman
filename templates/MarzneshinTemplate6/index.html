@@ -302,10 +302,10 @@
         <label class="profile-card__header" for="quick-add">➕ افزودن لینک ساب</label>
         <div class="accordion-content">
           <table>
-          <tr><td><a class="profile-card__links-button" id="singBoxAddLink" rel="noopener noreferrer" target="_blank">➕ به sing-box</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/sing-box'); return false;">📋 کپی</a></td></tr>
-          <tr><td><a class="profile-card__links-button" id="v2rayngAddLink" rel="noopener noreferrer" target="_blank">➕ به v2rayNG</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/v2ray'); return false;">📋 کپی</a></td></tr>
-          <tr><td><a class="profile-card__links-button" id="streisandAddLink" rel="noopener noreferrer" target="_blank">➕ به Streisand</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/xray'); return false;">📋 کپی</a></td></tr>
-          <tr><td><a class="profile-card__links-button" id="hiddifyAddLink" rel="noopener noreferrer" target="_blank">➕ به Hiddify</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/v2ray'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="singBoxAddLink" rel="noopener noreferrer" target="_blank">➕ به sing-box</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="v2rayngAddLink" rel="noopener noreferrer" target="_blank">➕ به v2rayNG</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/v2ray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="streisandAddLink" rel="noopener noreferrer" target="_blank">➕ به Streisand</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/xray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="hiddifyAddLink" rel="noopener noreferrer" target="_blank">➕ به Hiddify</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/v2ray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
           </table>
           
           <script>
