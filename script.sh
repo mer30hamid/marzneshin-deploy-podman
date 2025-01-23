@@ -9,8 +9,8 @@ NODE_DATA_DIR="/var/lib/$NODE_NAME"
 COMPOSE_FILE="$CONFIG_DIR/docker-compose.yml"
 USER_NAME="podman-user"
 
-FETCH_REPO="marzneshin/marzneshin"
-SCRIPT_URL="https://github.com/$FETCH_REPO/raw/master/script.sh"
+FETCH_REPO="mer30hamid/marzneshin-deploy-podman"
+SCRIPT_URL="https://github.com/$FETCH_REPO/raw/main/script.sh"
 
 # SCRIPT_URL="file://$(pwd)/script.sh"
 # SCRIPT_URL="file:///root/marzneshin/script.sh"

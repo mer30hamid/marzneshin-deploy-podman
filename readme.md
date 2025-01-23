@@ -145,12 +145,91 @@ https://gozargah.github.io/marzban/fa/docs/xray-inbounds
        exit 1
    fi  
    ```
-   
+
+## Problems
+
+### CGROUPSV1 
+
+```shell
+vi /etc/containers/containers.conf
+```
+```ini
+[engine]
+cgroup_manager = "cgroupfs"
+```
+
+## Nginx
+
+[To use with nginx](https://docs.marzneshin.org/docs/how-to-guides/behind-nginx/)
+
+```
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name  example.com;
+
+    ssl_certificate      /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/example.com/privkey.pem;
+
+    location ~* /(dashboard|static|locales|api|docs|redoc|openapi.json) {
+        proxy_pass http://0.0.0.0:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
+    # xray-core ws-path: /
+    # client ws-path: /marzneshin/me/2087
+    #
+    # All traffic is proxed through port 443, and send to the xray port(2087, 2088 etc.).
+    # The '/marzneshin' in location regex path can changed any characters by yourself.
+    #
+    # /${path}/${username}/${xray-port}
+    location ~* /marzneshin/.+/(.+)$ {
+        proxy_redirect off;
+        proxy_pass http://127.0.0.1:$1/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+```
+
+or
+
+```
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name  marzneshin.example.com;
+
+    ssl_certificate      /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/example.com/privkey.pem;
+
+    location / {
+        proxy_pass http://0.0.0.0:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+```
+
 ## Documents
+
 https://docs.marzneshin.org/
 
 https://github.com/Gozargah/Marzban/blob/master/README-fa.md
 
 https://gozargah.github.io/marzban/fa/docs/configuration
 
-https://gozargah.github.io/marzban/fa/docs/host-settings#%D8%A7%DB%8C%D8%AC%D8%A7%D8%AF-%D8%B9%D8%A8%D8%A7%D8%B1%D8%AA-%D8%AA%D8%B5%D8%A7%D8%AF%D9%81%DB%8C
+https://gozargah.github.io/marzban/fa/docs/host-settings
