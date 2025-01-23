@@ -15,6 +15,8 @@ SCRIPT_URL="https://github.com/$FETCH_REPO/raw/main/script.sh"
 # SCRIPT_URL="file://$(pwd)/script.sh"
 # SCRIPT_URL="file:///root/marzneshin/script.sh"
 
+PODMAN_IGNORE_CGROUPSV1_WARNING=0
+
 colorized_echo() {
     local color=$1
     local text=$2
@@ -160,12 +162,12 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 128M
+          memory: 256M
     privileged: true
     image: docker.io/dawsh/marzneshin:latest
     restart: always
     env_file: marzneshin.env
-    #network_mode: host
+    network_mode: host
     environment:
       # SQLALCHEMY_DATABASE_URL: "sqlite:////var/lib/marzneshin/db.sqlite3"
       SQLALCHEMY_DATABASE_URL: "mariadb+pymysql://root:12341234@localhost/marzneshin"
@@ -185,7 +187,7 @@ services:
     image: docker.io/dawsh/marznode:latest
     restart: always
     env_file: marznode.env
-    #network_mode: host
+    network_mode: host
     environment:
       SERVICE_ADDRESS: "127.0.0.1"
       INSECURE: "True"
@@ -206,7 +208,7 @@ services:
     privileged: true
     image: docker.io/mariadb:latest
     restart: always
-    #network_mode: host
+    network_mode: host
     environment:
       MARIADB_ROOT_PASSWORD: 12341234
       MARIADB_DATABASE: marzneshin
