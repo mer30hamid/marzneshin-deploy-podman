@@ -258,11 +258,11 @@ UVICORN_PORT = 8000
 
 # DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/xxxxxxx"
 
-# CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzneshin/templates/"
+CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzneshin/templates/"
 # CLASH_SUBSCRIPTION_TEMPLATE="/var/lib/marzneshin/templates/clash.yml"
 # SINGBOX_SUBSCRIPTION_TEMPLATE="/var/lib/marzneshin/templates/sing-box.json"
 # XRAY_SUBSCRIPTION_TEMPLATE="/var/lib/marzneshin/templates/xray.json"
-# SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
+SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
 # HOME_PAGE_TEMPLATE="home/index.html"
 
 # SQLALCHEMY_DATABASE_URL = "sqlite:///db.sqlite3"
