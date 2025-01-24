@@ -60,14 +60,20 @@ To start a script automatically when your Linux system boots up
 marzneshin cli admin create --sudo
 ```
 
-## Inbounds:
+## Inbounds
 
-Generator:
-https://azavaxhuman.github.io/MarzbanInboundGenerator/
+XRAY (Generator):
+ * https://azavaxhuman.github.io/MarzbanInboundGenerator/
 
-Examples:
-https://gozargah.github.io/marzban/fa/docs/xray-inbounds
+XRAY:
+ * https://gozargah.github.io/marzban/fa/docs/xray-inbounds
+ * https://github.com/XTLS/Xray-examples
 
+Hysteria2:
+ * https://v2.hysteria.network/docs/advanced/Full-Server-Config/
+
+sing-box:
+ * https://github.com/chika0801/sing-box-examples
 
 ## Sub Templates
 
@@ -148,7 +154,10 @@ https://gozargah.github.io/marzban/fa/docs/xray-inbounds
 
 ## Problems
 
+
 ### CGROUPSV1 
+
+some vps using CGROUPSV1
 
 ```shell
 vi /etc/containers/containers.conf
@@ -224,6 +233,22 @@ server {
 }
 ```
 
+## Logs
+
+marzneshin
+```
+cd /etc/opt/marzneshin/ && podman-compose logs -f marzneshin
+```
+
+marznode:
+```
+cd /etc/opt/marzneshin/ && podman-compose logs -f marznode
+```
+
+db:
+```
+cd /etc/opt/marzneshin/ && podman-compose logs -f db
+```
 ## Documents
 
 https://docs.marzneshin.org/

@@ -198,7 +198,8 @@ services:
       SSL_CERT_FILE: "./server.cert"
     volumes:
       - /var/lib/marznode:/var/lib/marznode
-      - /var/lib/marzneshin/certs:/var/lib/marzneshin/certs
+      - /var/lib/marzneshin/certs:/var/lib/marzneshin/certs:ro
+      - /etc/letsencrypt/live:/etc/letsencrypt/live:ro
   db:
     deploy:
       resources:
