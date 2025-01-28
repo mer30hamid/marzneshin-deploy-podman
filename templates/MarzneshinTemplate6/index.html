@@ -305,7 +305,7 @@
           <tr><td><a class="profile-card__links-button" id="singBoxAddLink" rel="noopener noreferrer" target="_blank">➕ به sing-box</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
           <tr><td><a class="profile-card__links-button" id="v2rayngAddLink" rel="noopener noreferrer" target="_blank">➕ به v2rayNG</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/v2ray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
           <tr><td><a class="profile-card__links-button" id="streisandAddLink" rel="noopener noreferrer" target="_blank">➕ به Streisand</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/xray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
-          <tr><td><a class="profile-card__links-button" id="hiddifyAddLink" rel="noopener noreferrer" target="_blank">➕ به Hiddify</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/v2ray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="hiddifyAddLink" rel="noopener noreferrer" target="_blank">➕ به Hiddify</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
           </table>
           
           <script>
@@ -326,7 +326,7 @@
             document.getElementById("singBoxAddLink").href = `sing-box://import-remote-profile?url=${baseUrl}${subscriptionUrl}/sing-box#${username}`;
             document.getElementById("v2rayngAddLink").href = `v2rayng://install-config?url=${baseUrl}${subscriptionUrl}/v2ray#${username}`;
             document.getElementById("streisandAddLink").href = `streisand://import/${baseUrl}${subscriptionUrl}/xray#${username}`;
-            document.getElementById("hiddifyAddLink").href = `hiddify://import/${baseUrl}${subscriptionUrl}#${username}/v2ray#${username}`;
+            document.getElementById("hiddifyAddLink").href = `hiddify://import/${baseUrl}${subscriptionUrl}#${username}/sing-box#${username}`;
           </script>
         </div>
       </div>
