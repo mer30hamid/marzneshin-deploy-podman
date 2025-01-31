@@ -302,11 +302,11 @@
         <label class="profile-card__header" for="quick-add">➕ افزودن لینک ساب</label>
         <div class="accordion-content">
           <table>
-          <tr><td><a class="profile-card__links-button" id="singBoxAddLink" rel="noopener noreferrer" target="_blank">➕ به sing-box</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
-          <tr><td><a class="profile-card__links-button" id="v2rayngAddLink" rel="noopener noreferrer" target="_blank">➕ به v2rayNG</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/v2ray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
-          <tr><td><a class="profile-card__links-button" id="streisandAddLink" rel="noopener noreferrer" target="_blank">➕ به Streisand</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/xray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
-          <tr><td><a class="profile-card__links-button" id="hiddifyAddLink" rel="noopener noreferrer" target="_blank">➕ به Hiddify</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
-          <tr><td><a class="profile-card__links-button" id="karingAddLink" rel="noopener noreferrer" target="_blank">➕ به Karing</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard(window.location.origin + '{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="singBoxAddLink" rel="noopener noreferrer" target="_blank">➕ به sing-box</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard('{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="v2rayngAddLink" rel="noopener noreferrer" target="_blank">➕ به v2rayNG</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard('{{ user.subscription_url }}' + '/v2ray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="streisandAddLink" rel="noopener noreferrer" target="_blank">➕ به Streisand</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard('{{ user.subscription_url }}' + '/xray#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="hiddifyAddLink" rel="noopener noreferrer" target="_blank">➕ به Hiddify</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard('{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
+          <tr><td><a class="profile-card__links-button" id="karingAddLink" rel="noopener noreferrer" target="_blank">➕ به Karing</a></td><td><a class="profile-card__links-button" href="#" onclick="copyToClipboard('{{ user.subscription_url }}' + '/sing-box#{{ user.username }}'); return false;">📋 کپی</a></td></tr>
           </table>
           
           <script>
@@ -343,7 +343,7 @@
           <a class="profile-card__links-button" href="#" rel="noopener noreferrer" target="_blank" id="v2rayNGv8a">⬇️ v2rayNG(v8a) - GitHub</a>
           <a class="profile-card__links-button" href="#" rel="noopener noreferrer" target="_blank" id="v2rayNGv7a">⬇️ v2rayNG(v7a) - GitHub</a>
           <a class="profile-card__links-button" href="https://play.google.com/store/apps/details?id=app.hiddify.com" rel="noopener noreferrer" target="_blank">▶️ Hiddify Next - Google Play</a>
-          <a class="profile-card__links-button" href="https://github.com/hiddify/hiddify-next/releases/latest/download/Hiddify-Android-universal.apk" rel="noopener noreferrer" target="_blank">⬇️ Hiddify Next</a>
+          <a class="profile-card__links-button" href="#" rel="noopener noreferrer" target="_blank" id="karingArm">⬇️ Karing - GitHub</a>
         </div>
       </div>
       <div class="profile-card__separator"></div>
@@ -353,6 +353,7 @@
         <div class="accordion-content">
           <a class="profile-card__links-button" href="https://apps.apple.com/us/app/sing-box/id6451272673" rel="noopener noreferrer" target="_blank">🍏 sing-box</a>
           <a class="profile-card__links-button" href="https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532" rel="noopener noreferrer" target="_blank">🍏 Hiddify</a>
+          <a class="profile-card__links-button" href="https://apps.apple.com/us/app/karing/id6472431552" rel="noopener noreferrer" target="_blank">🍏 Karing</a>
           <a class="profile-card__links-button" href="https://apps.apple.com/us/app/streisand/id6450534064" rel="noopener noreferrer" target="_blank">🍏 Streisand</a>
           <a class="profile-card__links-button" href="https://apps.apple.com/us/app/shadowrocket/id932747118" rel="noopener noreferrer" target="_blank">🍏 Shadowrocket 3$</a>
         </div>
@@ -364,6 +365,7 @@
         <div class="accordion-content">
           <a class="profile-card__links-button" href="https://github.com/2dust/v2rayN/releases/latest/download/zz_v2rayN-With-Core-SelfContained.7z" rel="noopener noreferrer" target="_blank">⬇️ v2rayN</a>
           <a class="profile-card__links-button" href="https://github.com/hiddify/hiddify-next/releases/latest/download/Hiddify-Windows-Portable-x64.zip" rel="noopener noreferrer" target="_blank">⬇️ Hiddify Next</a>
+          <a class="profile-card__links-button" href="#" rel="noopener noreferrer" target="_blank" id="karingWindows">⬇️ Karing</a>
         </div>
       </div>
     </div>
@@ -396,6 +398,7 @@
 
     const singbox = 'https://api.github.com/repos/SagerNet/sing-box/releases/latest';
     const v2rayng = 'https://api.github.com/repos/2dust/v2rayNG/releases/latest';
+    const karing = 'https://api.github.com/repos/KaringX/karing/releases/latest';
 
     document.addEventListener('DOMContentLoaded', async () => {
       try {
@@ -408,6 +411,13 @@
         v2rayngv8a.href = `https://github.com/2dust/v2rayNG/releases/download/${v2rayngName}/v2rayNG_${v2rayngName}_arm64-v8a.apk`;
         const v2rayngv7a = document.getElementById('v2rayNGv7a');
         v2rayngv7a.href = `https://github.com/2dust/v2rayNG/releases/download/${v2rayngName}/v2rayNG_${v2rayngName}_armeabi-v7a.apk`;
+        
+        var karingName = await getLatestReleaseName(karing);
+        karingName=karingName.replace('v','');
+        const karingArm = document.getElementById('karingArm');
+        karingArm.href = `https://github.com/KaringX/karing/releases/download/v${karingName}/karing_${karingName}_android_arm.apk`;
+        const karingWindows = document.getElementById('karingWindows');
+        karingWindows.href = `https://github.com/KaringX/karing/releases/download/v${karingName}/karing_${karingName}_windows_x64.zip`;
       } catch (error) {
         console.error('Failed to update link:', error);
       }
