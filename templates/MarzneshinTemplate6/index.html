@@ -322,7 +322,8 @@
             
             const subscriptionUrl = "{{ user.subscription_url }}";
             const username = encodeURIComponent("{{ user.username }}");
-            const baseUrl = window.location.origin;
+            //const baseUrl = window.location.origin;
+            const baseUrl = "";
           
             document.getElementById("singBoxAddLink").href = `sing-box://import-remote-profile?url=${baseUrl}${subscriptionUrl}/sing-box#${username}`;
             document.getElementById("v2rayngAddLink").href = `v2rayng://install-config?url=${baseUrl}${subscriptionUrl}/v2ray#${username}`;
