@@ -1,5 +1,5 @@
 ## Install 
-This is my copy of [marzneshin-deploy](https://github.com/marzneshin/marzneshin-deploy) script for [Marzneshin Panel](https://github.com/marzneshin/marzneshin). I use it for my personal use. I use **Podman** instead of **Docker**.
+This is a copy of [marzneshin-deploy](https://github.com/marzneshin/marzneshin-deploy) script for [Marzneshin Panel](https://github.com/marzneshin/marzneshin). I use it for my personal use. I use **Podman** instead of **Docker**.
 
 ### using script (full)
 ```sh
