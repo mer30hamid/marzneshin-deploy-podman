@@ -1,28 +1,169 @@
-This is my copy of [Marzneshin script](https://github.com/marzneshin/marzneshin) for personal use.
+## Install 
+This is my copy of [Marzneshin script](https://github.com/marzneshin/marzneshin) for personal use. I use **Podman** instead of **Docker**.
 
-## Install script
-```bash
+### using script (full)
+```sh
 bash -c "$(curl -H 'Cache-Control: no-cache' -sL https://raw.githubusercontent.com/mer30hamid/marzneshin-deploy-podman/refs/heads/main/script.sh)" @ install
 ```
 or copy script.sh to server (/root/) and run:
-```bash
+```sh
 bash -c "$(curl -sL file://$(pwd)/script.sh)" @ install
 ```
 
 or
 
-```bash
+```sh
 bash -c "$(curl -sL file:///root/marzneshin/script.sh)" @ restart
 ```
 
-## Install Service
+### Only marznode
+1. create this directory:
+```sh
+mdkir -p /etc/opt/marzneshin
+```
 
-To start a script automatically when your Linux system boots up
+2. copy this to /etc/opt/marzneshin/docker-compose.yml :
+
+Note: Don't forget to add your custom certificate pathes
+
+```yaml
+services:
+  marznode:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    privileged: true
+    image: docker.io/dawsh/marznode:latest
+    restart: always
+    env_file: marznode.env
+    environment:
+      SERVICE_ADDRESS: "0.0.0.0"
+      #INSECURE: "True"
+      XRAY_EXECUTABLE_PATH: "/usr/local/bin/xray"
+      XRAY_ASSETS_PATH: "/usr/local/lib/xray"
+      XRAY_CONFIG_PATH: "/var/lib/marznode/xray_config.json"
+      SSL_KEY_FILE: "/etc/letsencrypt/live/exampledomain.com/privkey.pem"
+      SSL_CERT_FILE: "/etc/letsencrypt/live/exampledomain.com/fullchain.pem"
+      SSL_CLIENT_CERT_FILE: "/var/lib/marznode/ssl_client_cert.pem"
+    network_mode: host
+    volumes:
+      - /var/lib/marznode:/var/lib/marznode
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+```
+3. Make it Up and running:
+```sh
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml -d up 
+```
+## update
+
+### using script (full)
+```sh
+marzneshin update
+```
+
+
+### using podman
+  1. pull the image
+  2. stop and start the service (container)
+  3. see status and history
+
+#### marznode
+
+```sh
+podman pull docker.io/dawsh/marznode:latest
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml stop marznode
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml start marznode
+podman ps
+podman history docker.io/dawsh/marznode:latest
+```
+
+#### marzneshin
+
+```sh
+podman pull docker.io/dawsh/marzneshin:latest
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml stop marzneshin
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml start marzneshin
+podman ps
+podman history docker.io/dawsh/marzneshin:latest
+```
+
+#### db
+
+```sh
+podman pull docker.io/mariadb:latest
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml stop db
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml start db
+podman ps
+podman history docker.io/mariadb:latest
+```
+
+## stop, start, restart
+### using script (full)
+use  [marzneshin-cli](#marzneshin-cli) commands, it will apply to all services.
+
+### using podman
+  `podman-compose -f /etc/opt/marzneshin/docker-compose.yml` `<stop|start|restart>` `<container name>`
+#### marznode
+
+* stop
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml stop marznode
+   ```
+
+* start
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml start marznode
+   ```
+
+* restart
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml restart marznode
+   ```
+
+#### marzneshin
+
+* stop
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml stop marzneshin
+   ```
+
+* start
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml start marzneshin
+   ```
+
+* restart
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml restart marzneshin
+   ```
+
+#### db
+
+* stop
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml stop db
+   ```
+
+* start
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml start db
+   ```
+
+* restart
+   ```sh
+   podman-compose -f /etc/opt/marzneshin/docker-compose.yml restart db
+   ```
+
+## Auto start Services on boot
+
+To start services automatically when your Linux system boots up
 
 1. **Create a systemd service file**:
    Open a terminal and create a new service file in `/etc/systemd/system/`. You can name it something like `marzneshin.service`.
 
-   ```bash
+   ```sh
    sudo nano /etc/systemd/system/marzneshin.service
    ```
 
@@ -44,20 +185,40 @@ To start a script automatically when your Linux system boots up
 
 4. **Enable the service** to start on boot:
 
-   ```bash
+   ```sh
    sudo systemctl enable marzneshin.service
    ```
 
 5. **Start the service** immediately (optional):
 
-   ```bash
+   ```sh
    sudo systemctl start marzneshin.service
    ```
 
 ## Marzneshin CLI
 
-```bash
+Add user:
+```sh
 marzneshin cli admin create --sudo
+```
+
+See all commands:
+
+```sh
+root@myserver:~# marzneshin
+Usage: /usr/local/bin/marzneshin [command]
+
+Commands:
+  up              Start services
+  down            Stop services
+  restart         Restart services
+  status          Show status
+  logs            Show logs
+  cli             Marzneshin command-line interface
+  install         Install Marzneshin
+  update          Update latest version
+  uninstall       Uninstall Marzneshin
+  install-script  Install Marzneshin script
 ```
 
 ## Inbounds
@@ -78,7 +239,7 @@ sing-box:
 ## Sub Templates
 
 1. Edit marzneshin .env file (`vi /etc/opt/marzneshin/marzneshin.env`) and uncomment these lines:
-   ```bash
+   ```sh
    CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzneshin/templates/"
    SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
    ```
@@ -91,60 +252,67 @@ sing-box:
    https://github.com/MatinDehghanian?tab=repositories
 
    for example:
-   ```bash
+   ```sh
    wget -N -P /var/lib/marzneshin/templates/subscription/ https://raw.githubusercontent.com/mer30hamid/marzneshin-deploy-podman/refs/heads/main/templates/MarzneshinTemplate6/index.html
    ```
 
 4. Restart is not needed but:
-   ```bash
+   ```sh
    marzneshin restart
    ```
 
 
 ## Backups
 
-1. Copy "db-backup" to /root/
-2. Using this script: https://github.com/mer30hamid/s-ui-backup
+
+1. Using this script: https://github.com/mer30hamid/s-ui-backup
    
    in /root/ folder call:
    
-   ```bash
+   ```sh
    bash <(curl -Ls https://raw.githubusercontent.com/mer30hamid/s-ui-backup/master/install.sh)
    ```
    
    it installs backup script `/usr/local/bin/backup_and_send.sh` and creates .env file in /root
 
-3. Edit .env file:
+2. Edit .env file:
 
-   ```bash
+   ```sh
    vi /root/.env
    ```
    
    use this (ommit telegram variables and use yours):
    
-   ```bash
+   ```sh
    TELEGRAM_BOT_TOKEN="1111"
    TELEGRAM_CHAT_ID="1111"
    ENABLE_NGINX_BACKUP="y"
    ENABLE_CERTBOT_BACKUP="y"
-   BACKUP_LIST="/var/lib/marzneshin/ /var/lib/marznode/"
+   BACKUP_LIST=("/var/lib/marzneshin/" "/var/lib/marznode/" "/etc/opt/marzneshin/")
    BACKUP_DIR="/tmp/backups/"
-   PANEL_DIR="/usr/local/s-ui/"
+   PANEL_DIR="/etc/opt/marzneshin/"
    NGINX_DIR="/etc/nginx/"
-   CERTBOT_DIRS="/etc/letsencrypt/live/ /etc/letsencrypt/renewal/ /etc/letsencrypt/accounts/"
+   CERTBOT_DIRS=("/etc/letsencrypt/live/" "/etc/letsencrypt/renewal/" "/etc/letsencrypt/accounts/")
    EXCLUDE_FILES="/var/lib/marzneshin/mysql/*"
    BACKUP_INTERVAL="1"
    ```
    
-4. Edit backup script:
+3. DB backup:
+
+   Copy "db-backup" to /root/ then :
    
-   ```bash
+   ```sh
+   chmod +x /root/db-backup/db-backup.sh
+   ```
+   
+   edit backup_and_send.sh:
+   ```sh
    vi /usr/local/bin/backup_and_send.sh
    ```
    
    and add this to its beginning before `source ...`
    
-   ```bash 
+   ```sh 
    /root/db-backup/db-backup.sh
    if [ $? -ne 0 ]; then
        echo "/root/db-backup/db-backup.sh failed"
@@ -237,17 +405,17 @@ server {
 
 marzneshin
 ```
-cd /etc/opt/marzneshin/ && podman-compose logs -f marzneshin
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml logs -f marzneshin
 ```
 
 marznode:
 ```
-cd /etc/opt/marzneshin/ && podman-compose logs -f marznode
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml logs -f marznode
 ```
 
 db:
 ```
-cd /etc/opt/marzneshin/ && podman-compose logs -f db
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml logs -f db
 ```
 ## Documents
 
