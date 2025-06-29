@@ -19,7 +19,7 @@ bash -c "$(curl -sL file:///root/marzneshin/script.sh)" @ restart
 ### Only marznode
 1. create this directory:
 ```sh
-mdkir -p /etc/opt/marzneshin
+mdkdir -p /etc/opt/marzneshin
 ```
 
 2. copy this to /etc/opt/marzneshin/docker-compose.yml :
