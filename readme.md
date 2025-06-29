@@ -54,7 +54,7 @@ services:
 ```
 3. Make it Up and running:
 ```sh
-podman-compose -f /etc/opt/marzneshin/docker-compose.yml -d up 
+podman-compose -f /etc/opt/marzneshin/docker-compose.yml up -d
 ```
 ## update
 
